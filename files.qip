@@ -18,3 +18,4 @@ set_global_assignment -name SYSTEMVERILOG_FILE rtl/ioport.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/hps_ext.v
 set_global_assignment -name SDC_FILE SGB.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE SGB.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/llapi.sv

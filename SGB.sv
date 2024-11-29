@@ -395,8 +395,8 @@ wire        ioctl_wr;
 wire  [7:0] ioctl_index;
 
 //LLAPI: Distinguish hps_io (usb) josticks from llapi joysticks
-wire [11:0] joy_usb_0, joy_usb_1, joy_usb_2, joy_usb_3, joy_usb_4;		
-wire [11:0] joy0,joy1,joy2,joy3,joy4;
+wire [12:0] joy_usb_0, joy_usb_1, joy_usb_2, joy_usb_3, joy_usb_4;		
+wire [12:0] joy0,joy1,joy2,joy3,joy4;
 //END LLAPI	
 
 wire [24:0] ps2_mouse;
@@ -1154,21 +1154,21 @@ wire use_llapi2 = llapi_en2 && llapi_select && ((|llapi_type2 && ~(&llapi_type2)
 
 //Port 1 mapping
 
-wire [11:0] joy_ll_a;
+wire [12:0] joy_ll_a;
 always_comb begin
 	// map for saturn controller
 	// use L and R instead of top face buttons
 	// no select button so use Z
 	if (llapi_type == 3 || llapi_type == 8) begin
 		joy_ll_a = {
-			llapi_buttons[5], llapi_buttons[6], // Start Select
+			1'd0, llapi_buttons[5], llapi_buttons[6], // Start Select
 			llapi_buttons[9] | llapi_buttons[7], llapi_buttons[8], // RT LT
 			llapi_buttons[2], llapi_buttons[3], llapi_buttons[0], llapi_buttons[1], // Y X B A
 			llapi_buttons[27], llapi_buttons[26], llapi_buttons[25], llapi_buttons[24] // d-pad
 		};
 	end else begin
 		joy_ll_a = {
-			llapi_buttons[5], llapi_buttons[4], // Start Select
+			1'd0, llapi_buttons[5], llapi_buttons[4], // Start Select
 			llapi_buttons[7], llapi_buttons[6], // RT LT
 			llapi_buttons[2], llapi_buttons[3], llapi_buttons[0], llapi_buttons[1], // Y X B A
 			llapi_buttons[27], llapi_buttons[26], llapi_buttons[25], llapi_buttons[24] // d-pad
@@ -1178,21 +1178,21 @@ end
 
 //Port 2 mapping
 
-wire [11:0] joy_ll_b;
+wire [12:0] joy_ll_b;
 always_comb begin
 	// map for saturn controller
 	// use L and R instead of top face buttons
 	// no select button so use Z
 	if (llapi_type2 == 3 || llapi_type2 == 8) begin
 		joy_ll_b = {
-			llapi_buttons2[5],  llapi_buttons2[6], // Start Select
+			1'd0, llapi_buttons2[5],  llapi_buttons2[6], // Start Select
 			llapi_buttons2[9] | llapi_buttons2[7],  llapi_buttons2[8], // RT LT
 			llapi_buttons2[2],  llapi_buttons2[3],  llapi_buttons2[0],  llapi_buttons2[1], // Y X B A
 			llapi_buttons2[27], llapi_buttons2[26], llapi_buttons2[25], llapi_buttons2[24] // d-pad
 		};
 	end else begin
 		joy_ll_b = {
-			llapi_buttons2[5],  llapi_buttons2[4], // Start Select
+			1'd0, llapi_buttons2[5],  llapi_buttons2[4], // Start Select
 			llapi_buttons2[7],  llapi_buttons2[6], // RT LT
 			llapi_buttons2[2],  llapi_buttons2[3],  llapi_buttons2[0],  llapi_buttons2[1], // Y X B A
 			llapi_buttons2[27], llapi_buttons2[26], llapi_buttons2[25], llapi_buttons2[24] // d-pad
